@@ -1,16 +1,15 @@
-import { createRoot } from "react-dom/client";
-import React, { FC, useMemo, useRef, useState } from "react";
+import { FC, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { createTextTexture } from "./lib/createTextTexture";
-import { useTexture } from "@react-three/drei";
+import { MeshLine, useTexture } from "@react-three/drei";
 
 const User: FC<{name: string, position: number[]}> = (props) => {
   const { name, position } = props;
   
-  const mesh = useRef();
+  const mesh = useRef<MeshLine>();
   const texture = useTexture(createTextTexture({text: name}));
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     mesh.current.rotation.x += 0.01;
     mesh.current.rotation.y += 0.01;
   });
@@ -62,7 +61,6 @@ function Users() {
     ];
   }, []);
 
-  console.log(users);
 
   return (
     <>
