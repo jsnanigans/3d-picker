@@ -19,7 +19,7 @@ const getCanvasElement = (): HTMLCanvasElement => {
 export const createTextTexture = (options: {
   text: string, color?: string, size?: number, background?: string
 }): string => {
-  const {text, color = '#000', size = 40, background = '#fff'} = options;
+  const {text, color = '#000', size = 40, background = 'hotpink'} = options;
   const canvas = getCanvasElement();
 
   const ctx = canvas.getContext('2d')
